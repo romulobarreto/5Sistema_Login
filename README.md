@@ -25,6 +25,10 @@ Representa um usuário do sistema.
 
 ## 📁 Estrutura do Projeto (Padrão MVC)
 
+### 📂 DataBase
+- `database.py`: Função que cria o banco de dados `system.db`.
+- `system.db`: Banco de dados do projeto.
+
 ### 📂 Models
 - `user.py`: Classe que define a entidade `User`.
 
