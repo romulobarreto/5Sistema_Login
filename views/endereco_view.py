@@ -46,3 +46,11 @@ class EnderecoView:
             print("\n✅ Todos endereços foram mantidos.")
 
         # Chama o controller
+        sucesso, mensagem = EnderecoController.excluir_endereco(email_mensagem, id_endereco)
+
+        if not sucesso:
+            print(mensagem)
+            return
+        else:
+            print(mensagem)
+            return
