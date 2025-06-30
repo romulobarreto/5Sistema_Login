@@ -1,5 +1,6 @@
 from database.database import criar_banco
 from views.user_view import *
+from views.endereco_view import *
 
 def menu():
     # Exibe o menu no terminal
@@ -22,7 +23,8 @@ def menu():
                         print("\n📑 Opções de cadastro:")
                         print("1️⃣ - Editar Cadastro")
                         print("2️⃣ - Excluir Conta")
-                        print("3️⃣ - Logout")
+                        print("3️⃣ - Endereços")
+                        print("4️⃣ - Sair")
 
                         opcao_login = input("\nDigite a opção desejada: ").strip()
 
@@ -34,8 +36,21 @@ def menu():
                             voltar_menu = True
                             break
                         elif opcao_login == "3":
-                            voltar_menu = True
-                            break
+                            while True:
+                                EnderecoView.detalhar_enderecos(email_mensagem)
+                                print("\n📑 Opções de cadastro:")
+                                print("1️⃣ - Cadastrar Endereço")
+                                print("2️⃣ - Excluir Endereço")
+                                print("3️⃣ - Voltar")
+
+                                opcao_endereco = input("\nDigite a opção desejada: ").strip()
+                                if opcao_endereco == "1":
+                                    EnderecoView.cadastrar_endereco(email_mensagem)
+                                elif opcao_endereco == "2":
+                                    pass
+                                elif opcao_endereco == "3":
+                                    break
+                            
                         else:
                             print("\n⚠️ Opção inválida! Tente novamente.")
 

@@ -31,7 +31,7 @@ class UserController:
 
 
     @staticmethod
-    def validar_dados(nome, email, senha, email_atual=None):
+    def _validar_dados(nome, email, senha, email_atual=None):
         # Carrega a lista de 
         sucesso, usuarios = UserDao.carregar_usuarios()
 
@@ -68,7 +68,7 @@ class UserController:
     @staticmethod
     def cadastrar_usuario(nome, email, senha):
         # Valida os dados recebidos
-        sucesso, mensagem = UserController.validar_dados(nome, email, senha)
+        sucesso, mensagem = UserController._validar_dados(nome, email, senha)
 
         if not sucesso:
             return False, mensagem
@@ -121,7 +121,7 @@ class UserController:
         senha_validar = senha if senha_alterada else "SenhaQualquer123@"
 
         # Valida os dados recebidos
-        sucesso, mensagem = UserController.validar_dados(nome, email, senha_validar, usuario_cadastrado.email)
+        sucesso, mensagem = UserController._validar_dados(nome, email, senha_validar, usuario_cadastrado.email)
 
         if not sucesso:
             return False, mensagem
