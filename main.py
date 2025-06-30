@@ -47,7 +47,7 @@ def menu():
                                 if opcao_endereco == "1":
                                     EnderecoView.cadastrar_endereco(email_mensagem)
                                 elif opcao_endereco == "2":
-                                    pass
+                                    EnderecoView.excluir_endereco(email_mensagem)
                                 elif opcao_endereco == "3":
                                     break
                             
@@ -82,7 +82,7 @@ def menu():
 
 
 
-        elif opcao == "3":
+        elif opcao == "4":
             print("🚪 Saindo do programa...")
             break
         else:
