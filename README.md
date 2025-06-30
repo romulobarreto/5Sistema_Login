@@ -73,7 +73,7 @@ Representa um endereço vinculado a um usuário.
 - Excluir usuários
 - Efetuar login
 - Efetuar logout
-- Cadastrar, listar, editar e excluir endereços de um usuário logado
+- Cadastrar, listar e excluir endereços de um usuário logado
 
 ---
 
@@ -95,5 +95,5 @@ Representa um endereço vinculado a um usuário.
 1. Usuário abre o sistema via terminal
 2. Escolhe entre: login, cadastro ou sair
 3. Se logado, pode editar ou excluir seu usuário
-4. Todas as ações afetam diretamente o banco de dados SQLite
-5. Usuário logado pode gerenciar seus endereços
+4. Usuário logado pode gerenciar seus endereços
+5. Todas as ações afetam diretamente o banco de dados SQLite
