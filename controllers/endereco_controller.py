@@ -71,3 +71,25 @@ class EnderecoController:
             )
 
         return True, lista_formatada
+    
+
+
+
+
+    @staticmethod
+    def excluir_endereco(email_mensagem, id_endereco):
+        # Carrega a lista de dados
+        sucesso, usuario = EnderecoDao.carregar_dados(email_mensagem)
+
+        verifica_id = next((endereco for endereco in usuario.enderecos if endereco.id == id_endereco), None)
+
+        if not verifica_id:
+            return False, f"\n❌ O ID: {id_endereco} não faz parte da sua lista de endereços."
+        
+        # Chama a DAO
+        sucesso, mensagem = EnderecoDao.excluir_endereco(id_endereco)
+
+        if not sucesso:
+            return False, mensagem
+        else: 
+            return True, mensagem
