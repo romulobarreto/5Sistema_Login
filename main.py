@@ -14,79 +14,79 @@ def menu():
 
         opcao = input("\nEscolha uma das opções: ").strip()
 
-        if opcao == "1":
-            while True:
-                sucesso, email_mensagem = UserView.login()
-                if sucesso:
-                    while True:
-                        UserView.detalhar_usuario(email_mensagem)
-                        print("\n📑 Opções de cadastro:")
-                        print("1️⃣ - Editar Cadastro")
-                        print("2️⃣ - Excluir Conta")
-                        print("3️⃣ - Endereços")
-                        print("4️⃣ - Sair")
+        match opcao:
+            case "1":
+                while True:
+                    sucesso, email_mensagem = UserView.login()
+                    if sucesso:
+                        while True:
+                            UserView.detalhar_usuario(email_mensagem)
+                            print("\n📑 Opções de cadastro:")
+                            print("1️⃣ - Editar Cadastro")
+                            print("2️⃣ - Excluir Conta")
+                            print("3️⃣ - Endereços")
+                            print("4️⃣ - Sair")
 
-                        opcao_login = input("\nDigite a opção desejada: ").strip()
+                            opcao_login = input("\nDigite a opção desejada: ").strip()
 
-                        if opcao_login == "1":
-                            email_mensagem = UserView.editar_usuario(email_mensagem)
-                            continue
-                        elif opcao_login == "2":
-                            UserView.excluir_conta(email_mensagem)
-                            voltar_menu = True
-                            break
-                        elif opcao_login == "3":
-                            while True:
-                                EnderecoView.detalhar_enderecos(email_mensagem)
-                                print("\n📑 Opções de cadastro:")
-                                print("1️⃣ - Cadastrar Endereço")
-                                print("2️⃣ - Excluir Endereço")
-                                print("3️⃣ - Voltar")
-
-                                opcao_endereco = input("\nDigite a opção desejada: ").strip()
-                                if opcao_endereco == "1":
-                                    EnderecoView.cadastrar_endereco(email_mensagem)
-                                elif opcao_endereco == "2":
-                                    EnderecoView.excluir_endereco(email_mensagem)
-                                elif opcao_endereco == "3":
+                            match opcao_login:
+                                case "1":
+                                    email_mensagem = UserView.editar_usuario(email_mensagem)
+                                case "2":
+                                    UserView.excluir_conta(email_mensagem)
+                                    voltar_menu = True
                                     break
-                            
-                        else:
-                            print("\n⚠️ Opção inválida! Tente novamente.")
+                                case "3":
+                                    while True:
+                                        EnderecoView.detalhar_enderecos(email_mensagem)
+                                        print("\n📑 Opções de cadastro:")
+                                        print("1️⃣ - Cadastrar Endereço")
+                                        print("2️⃣ - Excluir Endereço")
+                                        print("3️⃣ - Voltar")
 
-                    if voltar_menu:
-                        break
+                                        opcao_endereco = input("\nDigite a opção desejada: ").strip()
+                                        match opcao_endereco:
+                                            case "1":
+                                                EnderecoView.cadastrar_endereco(email_mensagem)
+                                            case "2":
+                                                EnderecoView.excluir_endereco(email_mensagem)
+                                            case "3":
+                                                break
+                                            case _:
+                                                print("\n⚠️ Opção inválida! Tente novamente.")
+                                case "4":
+                                    voltar_menu = True
+                                    break
+                                case _:
+                                    print("\n⚠️ Opção inválida! Tente novamente.")
 
-                else:
-                    while True:
-                        print("1️⃣ - Tentar Novamente")
-                        print("2️⃣ - Voltar")
-
-                        opcao_login = input("\nDigite a opção desejada: ").strip()
-
-                        if opcao_login == "1":
-                            voltar_menu = False
+                        if voltar_menu:
                             break
-                        elif opcao_login == "2":
-                            voltar_menu = True
+                    else:
+                        while True:
+                            print("1️⃣ - Tentar Novamente")
+                            print("2️⃣ - Voltar")
+
+                            opcao_login = input("\nDigite a opção desejada: ").strip()
+                            match opcao_login:
+                                case "1":
+                                    voltar_menu = False
+                                    break
+                                case "2":
+                                    voltar_menu = True
+                                    break
+                                case _:
+                                    print("\n⚠️ Opção inválida! Tente novamente.")
+                        
+                        if voltar_menu:
                             break
-                        else:
-                            print("\n⚠️ Opção inválida! Tente novamente.")
-                    
-                    if voltar_menu:
-                        break
-
-
-        elif opcao == "2":
-            UserView.cadastrar_usuario()
-
-
-
-        elif opcao == "4":
-            print("🚪 Saindo do programa...")
-            break
-        else:
-            print("⚠️ Opção inválida! Tente novamente.\n")
+            case "2":
+                UserView.cadastrar_usuario()
+            case "3":
+                print("🚪 Saindo do programa...")
+                break
+            case _:
+                print("⚠️ Opção inválida! Tente novamente.\n")
 
                     
 
