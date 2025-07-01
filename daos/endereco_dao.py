@@ -1,5 +1,5 @@
 from models.endereco import *
-from sqlmodel import Session, select
+from sqlmodel import Session, select, delete
 from sqlalchemy.orm import selectinload
 from database.database import engine
 from models.user import User
@@ -42,8 +42,21 @@ class EnderecoDao:
                 endereco = session.exec(statement).first()
                 session.delete(endereco)
                 session.commit()
-                session.refresh(endereco)
                 return True, "\n✅ Endereço excluído com sucesso."
         except Exception as e:
             return False, f"\n⚠️ Erro ao excluir endereço: {str(e)}"
         
+
+
+
+    @staticmethod
+    def excluir_em_massa(email):
+        try:
+            with Session(engine) as session:
+                statement = select(User).where(User.email == email)
+                usuario = session.exec(statement).first()
+                session.exec(delete(Endereco).where(Endereco.user_id == usuario.id))
+                session.commit()
+                return True, "\n✅ Endereços excluídos com sucesso."
+        except Exception as e:
+            return False, f"\n⚠️ Erro ao excluir base de endereços: {str(e)}"
