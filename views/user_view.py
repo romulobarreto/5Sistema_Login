@@ -107,7 +107,7 @@ class UserView:
             # Valida a senha confirmada
             if senha != confirma_senha:
                 print("\n⚠️ As senhas estão diferentes.")
-                return
+                return email_mensagem
             
 
         elif opcao == "4":
@@ -138,7 +138,7 @@ class UserView:
                 return email
         else:
             print(mensagem)
-            return
+            return email_mensagem
         
 
 
