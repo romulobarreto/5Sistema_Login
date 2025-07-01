@@ -33,9 +33,27 @@ def menu():
                                 case "1":
                                     email_mensagem = UserView.editar_usuario(email_mensagem)
                                 case "2":
-                                    UserView.excluir_conta(email_mensagem)
-                                    voltar_menu = True
-                                    break
+                                    while True:
+                                        print("\n❓ Deseja realmente excluir sua conta?")
+                                        print("1️⃣ - Sim")
+                                        print("2️⃣ - Não")
+
+                                        opcao_excluir = input("\nDigite a opção desejada: ").strip()
+
+                                        match opcao_excluir:
+                                            case "1":
+                                                UserView.excluir_conta(email_mensagem)
+                                                voltar_menu = True
+                                                break
+                                            case "2":
+                                                voltar_menu = False
+                                                break
+                                            case _:
+                                                print("\n⚠️ Opção inválida! Tente novamente.")
+                                    
+                                    if voltar_menu:
+                                        break
+
                                 case "3":
                                     while True:
                                         EnderecoView.detalhar_enderecos(email_mensagem)
