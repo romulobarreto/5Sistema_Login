@@ -1,5 +1,6 @@
 from models.user import User
 from daos.user_dao import UserDao
+from daos.endereco_dao import EnderecoDao
 from utils.validacao import validar_email, validar_senha
 import hashlib
 
@@ -140,7 +141,12 @@ class UserController:
     
     @staticmethod
     def excluir_conta(email_mensagem):
-        # Chama a DAO
+        # Chama a DAO de Endereco
+        sucesso, mensagem = EnderecoDao.excluir_em_massa(email_mensagem)
+        if not sucesso:
+            return False, mensagem
+
+        # Chama a DAO de Usuário
         sucesso, mensagem = UserDao.excluir_usuario(email_mensagem)
 
         # Exibe retorno
