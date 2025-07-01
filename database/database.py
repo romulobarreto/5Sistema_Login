@@ -1,5 +1,4 @@
 from sqlmodel import SQLModel, create_engine
-from models.user import *
 
 engine = create_engine("sqlite:///database/system.db")
 
